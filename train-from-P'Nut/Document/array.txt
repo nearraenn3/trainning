@@ -1,0 +1,86 @@
+Data structure
+array ->  array(static type -> identify the space for array), arraylist(dynamic type -> Not identify the space for array)
+
+const arr =    [0, 2, 3, 6, 8];
+            // [0, 1, 2, 3, 4]
+
+const arr =    [0, 2, 3, 5, 8];
+            // [0, 1, 2, 3, 4]
+               
+// access -> 0(1) 
+// insert -> 0(n)
+// delete -> 0(n)
+// search -> 0(n) 
+
+const arrs = [1, 2];
+arrs.push(3); // -> [1, 2, 3]
+arrs.slice(0, 1); // -> [1, 3]
+arrs.splice(1, 0, 2) // -> [1, 2, 3] // splice(start(point to index), delete, value)
+arrs.pop() -> ex. const arr = [1, 2, 3] -> arr.pop() = [1, 2]
+arrs.unshift
+
+-----
+
+# Example 1
+function a(animal) {
+	animal.isOpen = true;
+}
+
+const cat = {
+	isOpen = false
+}
+
+console.log(a(cat).isOpen); //true
+
+# Example 2
+function a(animal) {
+	animal = {isOpen: true};
+};
+
+const cat = {
+	isOpen = false
+};
+
+console.log(a(cat).isOpen); //false
+
+-----
+
+Event loop
+
+Example
+function a() {
+	SetTimeOut(console.log("Hello"), 2000);
+}
+funtion b() {
+	a();
+	SetTimeOut(console.log("Yo"), 1000)
+}
+function c(){
+	b();
+	console.log("Hi");
+}
+
+c();
+
+- call stack 
+	- c()
+	- b()
+	- a()
+	- setTimeOut in function a() [wait 2 seconds] and console.log("Hello")
+	- setTimeOut in function b() [wait 1 second] and console.log("Yo")
+	- console.log("Hi")
+- Event Table
+	- print Hi
+	- wait 1 second before print Yo
+	- wait 2 seconds before print Hello
+- Event queue
+	1. print Hi first bcuz it doesn't have the timeOut
+	2. print Yo
+	3. print Hello 
+
+-----
+
+First process has delay 1 second
+Second process has delay 2 seconds
+Sync(blocking io) - wait until the first process done and move to the second process (will take 3 second for doing two processes)
+Async(Non-blocking io) - start with the first process dont have to wait until it done and move to do second process (will take 2 second for doing two processes)
